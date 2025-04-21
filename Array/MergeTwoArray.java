@@ -40,3 +40,42 @@ public class Solution {
         return dummy.next;
     }
 }
+
+public class Main {
+    public static void main(String[] args) {
+        // Create first list: 1 -> 3 -> 5
+        ListNode list1 = createList(new int[]{1, 3, 5});
+
+        // Create second list: 2 -> 4 -> 6
+        ListNode list2 = createList(new int[]{2, 4, 6});
+
+        // Merge the lists
+        Solution solution = new Solution();
+        ListNode merged = solution.mergeTwoLists(list1, list2);
+
+        // Print the merged list
+        printList(merged);  // Expected output: 1 -> 2 -> 3 -> 4 -> 5 -> 6
+    }
+
+    // Helper method to create a linked list from an array
+    private static ListNode createList(int[] values) {
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
+        for (int val : values) {
+            current.next = new ListNode(val);
+            current = current.next;
+        }
+        return dummy.next;
+    }
+
+    // Helper method to print a linked list
+    private static void printList(ListNode head) {
+        while (head != null) {
+            System.out.print(head.val);
+            if (head.next != null) System.out.print(" -> ");
+            head = head.next;
+        }
+        System.out.println();
+    }
+}
+
